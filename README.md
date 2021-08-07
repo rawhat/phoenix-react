@@ -1,20 +1,27 @@
 # PhoenixReact
 
-To start your Phoenix server:
+This is a fairly simple, but relatively complete "template" for a... `phoenix`
+and `react` application.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+It's using `phoenix` 1.6 ish, generated with `ecto` and `html`, but instead of
+`webpack`, it's using `esbuild` with `croc`.  It supports `typescript`, and
+does type-checking with `tsc`.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Everything is bundled with `docker-compose`, which also mounts `/srv/app/db`
+for `postgresql`.  That way you can have a persitent database to work with.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+To setup, you'll probably want to run
 
-## Learn more
+  - `docker-compose build`
+  - `POSTGRES_PASSWORD=some_password_you_want docker-compose run api mix ecto.create`
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+where the password can be anything you want.  If it's not `postgres`, you'll
+have to change the password in `config/dev.exs`.
+
+Then you should be able to run `docker-compose up` and access the app at
+`http://localhost:4000`.
+
+## Dependencies
+It's pretty much self-contained, and you could totally just run all `mix phx.*`
+tasks inside the container.  It's volume-mounted, so changes will be reflected
+in the host file system.  Kinda nice to have `elixir` installed locally though.

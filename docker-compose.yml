@@ -1,0 +1,25 @@
+services:
+  api:
+    depends_on:
+      - db
+    build: .
+    ports:
+      - 4000:4000
+    volumes:
+      - type: bind
+        source: .
+        target: /opt/app
+      - build:/opt/app/_build
+      - deps:/opt/app/deps
+  db:
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - /srv/app/db:/var/lib/postgresql/data
+volumes:
+  build:
+  deps:

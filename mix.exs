@@ -33,9 +33,9 @@ defmodule PhoenixReact.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       {:telemetry, "~> 1.0.0", override: true},
-      {:phoenix,
-       git: "https://github.com/phoenixframework/phoenix", branch: "v1.5", override: true},
+      {:phoenix, "~> 1.5"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.5"},
       {:postgrex, ">= 0.0.0"},
@@ -45,7 +45,7 @@ defmodule PhoenixReact.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.15"},
-      {:jason, "~> 1.0"},
+      {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.2"}
     ]
   end

@@ -21,7 +21,25 @@ have to change the password in `config/dev.exs`.
 Then you should be able to run `docker-compose up` and access the app at
 `http://localhost:4000`.
 
+## Reusing
+Do a `git clone` of this repo, and then do a find and replace for
+`phoenix_react` and `PhoenixReact` and replace that with the app name you
+would like.  I _think_ that should work.
+
 ## Dependencies
 It's pretty much self-contained, and you could totally just run all `mix phx.*`
 tasks inside the container.  It's volume-mounted, so changes will be reflected
 in the host file system.  Kinda nice to have `elixir` installed locally though.
+
+## Releases
+This template has support for building a slim, production `docker` image from
+the `elixir` source and UI assets.  To do so, simply run the `releases.sh`:
+
+```bash
+# Or just generate the secret somewhere else...
+SECRET_KEY_BASE=(mix phx.gen.secret) DB_HOST=host DB_USER=user DB_NAME=myapp ./releases.sh
+```
+
+It will prompt you for the database password.  This will build the production
+container and start it as a daemon.  If you want this image pushed somewhere,
+just remove the last line of `releases.sh`.

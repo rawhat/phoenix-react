@@ -33,4 +33,6 @@ ADD assets/src/ /opt/app/assets/src/
 
 WORKDIR /opt/app
 
+COPY lib/ /opt/app/lib/
+
 CMD ["mix", "phx.server"]

@@ -1,11 +1,11 @@
-use Mix.Config
+import Config
 
 # Configure your database
 config :phoenix_react, PhoenixReact.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "phoenix_react_dev",
-  hostname: "db",
+  username: System.get_env("DB_USER", "postgres"),
+  password: System.get_env("DB_PASS", "postgres"),
+  database: System.get_env("DB_NAME", "phoenix_react_dev"),
+  hostname: System.get_env("DB_HOST", "db"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

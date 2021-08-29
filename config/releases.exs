@@ -23,20 +23,21 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
-config :phoenix_react, PhoenixReactWeb.Endpoint,
+config :phoenix_react, PhoenixReact.Endpoint,
   http: [
     port: String.to_integer(System.get_env("PORT") || "4000"),
     transport_options: [socket_opts: [:inet6]]
   ],
   secret_key_base: secret_key_base
 
+config :phoenix, :json_library, Jason
+
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start each relevant endpoint:
 #
-#     config :phoenix_react, PhoenixReactWeb.Endpoint, server: true
+config :phoenix_react, PhoenixReact.Endpoint, server: true
 #
 # Then you can assemble a release by calling `mix release`.
 # See `mix help release` for more information.
-config :phoenix_react, PhoenixReactWeb.Endpoint, server: true

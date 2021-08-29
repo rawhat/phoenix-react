@@ -11,6 +11,7 @@ services:
         target: /opt/app
       - build:/opt/app/_build
       - deps:/opt/app/deps
+      - node_modules:/opt/app/assets/node_modules
   db:
     environment:
       POSTGRES_PASSWORD: postgres
@@ -21,5 +22,6 @@ services:
     volumes:
       - /srv/app/db:/var/lib/postgresql/data
 volumes:
+  node_modules:
   build:
   deps:

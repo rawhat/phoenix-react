@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-js": "tsc --noEmit && esbuild --bundle src/index.tsx --outfile=dist/js/app.js --sourcemap --minify",
+    "build-js": "tsc --noEmit && esbuild --bundle src/index.tsx --outfile=dist/js/app.js --minify",
     "watch-js": "tsc --noEmit && esbuild --bundle src/index.tsx --outfile=../priv/static/js/app.js --sourcemap --watch",
     "build-css": "cross-env ENV_BUILD=prod postcss src/index.css -o dist/css/app.css",
     "watch-css": "tailwindcss --input=src/index.css --output=../priv/static/css/app.css --postcss --watch",
